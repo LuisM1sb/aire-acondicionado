@@ -62,7 +62,7 @@ Modifica el contenido de la ventana de información:
 const infoWindow = new google.maps.InfoWindow({
   content: `
     <div style="padding: 10px; max-width: 200px;">
-      <h3 style="margin: 0 0 5px 0; color: #1e3a8a;">ClimaPro</h3>
+      <h3 style="margin: 0 0 5px 0; color: #1e3a8a;">Waywen Climatización</h3>
       <p style="margin: 0; color: #64748b;">Aire Acondicionado</p>
       <p style="margin: 5px 0 0 0; color: #64748b;">TU_DIRECCION_AQUI</p>
     </div>
