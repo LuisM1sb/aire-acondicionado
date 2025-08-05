@@ -23,5 +23,5 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# setup md format files
-*SETUP.md
+# Google Maps Setup
+GOOGLE_MAPS_SETUP.md
