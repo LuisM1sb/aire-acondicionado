@@ -136,13 +136,17 @@
 
         <div class="map-container">
           <h3>Nuestra Ubicación</h3>
-          <div class="map" id="map">
-            <div class="map-placeholder">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-              </svg>
-              <p>Cargando mapa...</p>
-            </div>
+          <div class="map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.5!2d-70.6483!3d-33.4489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDI2JzU2LjAiUyA3MMKwMzgnNTQuMCJX!5e0!3m2!1ses!2scl!4v1234567890"
+              width="100%"
+              height="100%"
+              style="border: 0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Ubicación en Google Maps"
+            ></iframe>
           </div>
         </div>
       </div>
@@ -411,21 +415,12 @@
     border-radius: 15px;
     overflow: hidden;
     background: #f1f5f9;
-    position: relative;
   }
 
-  .map-placeholder {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: #64748b;
-  }
-
-  .map-placeholder svg {
-    margin-bottom: 1rem;
-    color: #94a3b8;
+  .map iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
   }
 
   @media (max-width: 768px) {
@@ -509,77 +504,4 @@
       btnLoading.style.display = 'none';
     }
   });
-
-  // Google Maps integration
-  function initMap() {
-    // Replace with your actual coordinates
-    const location = { lat: 40.7128, lng: -74.0060 }; // New York coordinates as example
-    
-    const map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 15,
-      center: location,
-      styles: [
-        {
-          featureType: "all",
-          elementType: "geometry",
-          stylers: [{ color: "#f5f5f5" }]
-        },
-        {
-          featureType: "water",
-          elementType: "geometry",
-          stylers: [{ color: "#c9c9c9" }]
-        },
-        {
-          featureType: "poi",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#757575" }]
-        }
-      ]
-    });
-
-    const marker = new google.maps.Marker({
-      position: location,
-      map: map,
-              title: "Waywen Climatización - Aire Acondicionado",
-      icon: {
-        url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(`
-          <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="20" r="18" fill="#3b82f6" stroke="white" stroke-width="2"/>
-            <path d="M20 8l-8 12h6v8l8-12h-6v-8z" fill="white"/>
-          </svg>
-        `),
-        scaledSize: new google.maps.Size(40, 40)
-      }
-    });
-
-    const infoWindow = new google.maps.InfoWindow({
-      content: `
-        <div style="padding: 10px; max-width: 200px;">
-          <h3 style="margin: 0 0 5px 0; color: #1e3a8a;">Waywen Climatización</h3>
-          <p style="margin: 0; color: #64748b;">Aire Acondicionado</p>
-          <p style="margin: 5px 0 0 0; color: #64748b;">Av. Principal 123, Ciudad</p>
-        </div>
-      `
-    });
-
-    marker.addListener('click', () => {
-      infoWindow.open(map, marker);
-    });
-  }
-
-  // Load Google Maps API
-  function loadGoogleMapsAPI() {
-    const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap`;
-    script.async = true;
-    script.defer = true;
-    document.head.appendChild(script);
-  }
-
-  // Initialize map when page loads
-  if (typeof google !== 'undefined') {
-    initMap();
-  } else {
-    loadGoogleMapsAPI();
-  }
 </script> 
